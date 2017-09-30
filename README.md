@@ -57,5 +57,9 @@ like this:
 % git add umbrella/README.md
 % git commit
 % git push
+...
 % git subrepo push umbrella
+Subrepo 'umbrella' pushed to 'git@dev.pdl.cmu.edu:pdlfs/umbrella' (master).
+%
 ```
+
