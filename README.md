@@ -151,7 +151,7 @@ umbrella_opt_default (BMI_TAG "49234ab")
 ```
 changes the default tag for BMI from the value "master" (specified
 in the included umbrella/bmi) to "49234ab" allowing your project to
-lock down to a specific version of BMI.   Note that default vaules
+lock down to a specific version of BMI.   Note that default values
 set by umbrella_opt_default() can be overridden in three ways:
 1. using "ccmake" to edit and change the value
 1. running cmake with a new "-D" value on the command line
@@ -223,7 +223,7 @@ The umbrella-main.cmake script contains common functions including:
 * umbrella_opt_default(var newdefault) - set new default value for option var
 
 The ensure-autogen script is used to run autotools to generate
-a configure script (for projects that ship without a pregenereated one).
+a configure script (for projects that ship without a pre-generated one).
 
 Within the main directory there is an umbrella subdirectory that
 contains scripts for each project that can be generated.  For
@@ -280,7 +280,7 @@ The umbrella_download() function generates a download command for
 this project by first looking to see if there is a cached local tar file
 available.  If it is present, then that is used.  Otherwise we
 access the project over the internet using git.  Supporting
-cached local tar files is imporant for enviroments where access
+cached local tar files is important for environments where access
 to the internet is restricted.
 
 The umbrella_patchcmd looks for patches in 4 places and generates
