@@ -33,7 +33,7 @@ umbrella_patchcheck (LIBCONFIG_PATCHCMD libconfig)
 find_program (LIBCONFIG_MAKEINFO makeinfo)
 if (NOT LIBCONFIG_MAKEINFO)
     set (LIBCONFIG_INFOINFO "MAKEINFO=true")
-    message (STATUS "libconfig: makeinfo disabled!")
+    message (STATUS "  libconfig: makeinfo disabled!")
 endif ()
 
 #
