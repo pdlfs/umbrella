@@ -19,7 +19,7 @@ if (NOT TARGET libzmq3x)
 # umbrella option variables
 #
 umbrella_defineopt (LIBZMQ3X_BASEURL
-    "https://github.com/zeromq/zeromq3-x/releases/download" STRING 
+    "https://github.com/zeromq/zeromq3-x/releases/download" STRING
     "base url for libzmq3x")
 umbrella_defineopt (LIBZMQ3X_URLDIR "v3.2.5" STRING "libzmq3x subdir")
 umbrella_defineopt (LIBZMQ3X_URLFILE "zeromq-3.2.5.tar.gz"
