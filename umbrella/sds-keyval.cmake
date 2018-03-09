@@ -30,13 +30,14 @@ umbrella_download (SDS_KEYVAL_DOWNLOAD sds-keyval ${SDS_KEYVAL_TAR}
 umbrella_patchcheck (SDS_KEYVAL_PATCHCMD sds-keyval)
 
 # sds-keyval requirements
+include (umbrella/ch-placement)
 include (umbrella/margo)
 include (umbrella/ssg)
 
 #
 # create sds-keyval target
 #
-ExternalProject_Add (sds-keyval DEPENDS margo ssg
+ExternalProject_Add (sds-keyval DEPENDS ch-placement margo ssg
     ${SDS_KEYVAL_DOWNLOAD} ${SDS_KEYVAL_PATCHCMD}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_MPICOMP}
                       ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAG}
