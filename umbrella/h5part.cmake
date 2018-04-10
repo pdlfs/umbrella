@@ -44,6 +44,15 @@ else ()
 endif ()
 
 #
+# build options
+#
+umbrella_defineopt (H5PART_ENABLE_PARALLEL "OFF" BOOL "Build MPI parallel code")
+
+if (H5PART_ENABLE_PARALLEL)
+    set (h5part-parallel-flag --enable-parallel)
+endif ()
+
+#
 # generate parts of the ExternalProject_Add args...
 #
 umbrella_download (H5PART_DOWNLOAD h5part ${H5PART_TAR} ${H5PART_FETCH})
@@ -57,9 +66,9 @@ include (umbrella/hdf5)
 #
 ExternalProject_Add (h5part DEPENDS hdf5
     ${H5PART_DOWNLOAD} ${H5PART_PATCHCMD}
-    CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_COMP}
+    CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_MPICOMP}
                       ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAG}
-                      --enable-shared
+                      --enable-shared ${h5part-parallel-flag}
                       --with-hdf5=${CMAKE_INSTALL_PREFIX}
                       --prefix=${CMAKE_INSTALL_PREFIX}
     BUILD_IN_SOURCE 1
