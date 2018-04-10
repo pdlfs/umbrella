@@ -44,12 +44,14 @@ else ()
 endif ()
 
 #
-# build options
+# build options -- we trigger off HDF5_ENABLE_PARALLEL
 #
-umbrella_defineopt (H5PART_ENABLE_PARALLEL "OFF" BOOL "Build MPI parallel code")
-
-if (H5PART_ENABLE_PARALLEL)
+if (HDF5_ENABLE_PARALLEL)
+    set (h5part-umb-comp ${UMBRELLA_MPICOMP})
     set (h5part-parallel-flag --enable-parallel)
+else ()
+    set (h5part-umb-comp ${UMBRELLA_COMP})
+    set (h5part-parallel-flag --disable-parallel)
 endif ()
 
 #
@@ -66,7 +68,7 @@ include (umbrella/hdf5)
 #
 ExternalProject_Add (h5part DEPENDS hdf5
     ${H5PART_DOWNLOAD} ${H5PART_PATCHCMD}
-    CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_MPICOMP}
+    CONFIGURE_COMMAND <SOURCE_DIR>/configure ${h5part-umb-comp}
                       ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAG}
                       --enable-shared ${h5part-parallel-flag}
                       --with-hdf5=${CMAKE_INSTALL_PREFIX}
