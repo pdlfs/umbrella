@@ -69,7 +69,7 @@ include (umbrella/hdf5)
 ExternalProject_Add (h5part DEPENDS hdf5
     ${H5PART_DOWNLOAD} ${H5PART_PATCHCMD}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure ${h5part-umb-comp}
-                      ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAG}
+                      ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAGS}
                       --enable-shared ${h5part-parallel-flag}
                       --with-hdf5=${CMAKE_INSTALL_PREFIX}
                       --prefix=${CMAKE_INSTALL_PREFIX}
