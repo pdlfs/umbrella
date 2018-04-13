@@ -40,7 +40,7 @@ include (umbrella/ssg)
 ExternalProject_Add (sds-keyval DEPENDS ch-placement margo ssg
     ${SDS_KEYVAL_DOWNLOAD} ${SDS_KEYVAL_PATCHCMD}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_MPICOMP}
-                      ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAG}
+                      ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAGS}
                       ${UMBRELLA_PKGCFGPATH}
                       --prefix=${CMAKE_INSTALL_PREFIX}
                       --enable-shared

@@ -38,7 +38,7 @@ include (umbrella/argobots)
 ExternalProject_Add (abt-io DEPENDS argobots
     ${ABT_IO_DOWNLOAD} ${ABT_IO_PATCHCMD}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_MPICOMP}
-                      ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAG}
+                      ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAGS}
                       ${UMBRELLA_PKGCFGPATH}
                       --prefix=${CMAKE_INSTALL_PREFIX}
                       --enable-shared
