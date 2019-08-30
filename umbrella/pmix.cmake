@@ -36,6 +36,15 @@ include (umbrella/hwloc)
 include (umbrella/libevent)
 
 #
+# build optimized version unless the build type is Debug
+#
+if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+    set (PMIX_EXTRA_CFG "")
+else ()
+    set (PMIX_EXTRA_CFG "--with-platform=optimized")
+endif ()
+
+#
 # create pmix target
 #
 ExternalProject_Add (pmix DEPENDS hwloc libevent
@@ -43,7 +52,7 @@ ExternalProject_Add (pmix DEPENDS hwloc libevent
     CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_COMP}
                       ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAGS}
                       ${UMBRELLA_PKGCFGPATH}
-                      --prefix=${CMAKE_INSTALL_PREFIX}
+                      --prefix=${CMAKE_INSTALL_PREFIX} ${PMIX_EXTRA_CFG}
     UPDATE_COMMAND ""
 )
 
