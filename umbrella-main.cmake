@@ -371,7 +371,7 @@ set(UMBRELLA_CPPFLAGS "CPPFLAGS=${UMBRELLA_CPPFLAGS}")
 #
 unset(UMBRELLA_LDFLAGS)
 foreach(umbrella_val ${UMBRELLA_LIBDIRS})
-    if(NOT UMBRELLA_FLAGS)
+    if(NOT DEFINED UMBRELLA_LDFLAGS)
       set(UMBRELLA_LDFLAGS "-L${umbrella_val} -Wl,-rpath,${umbrella_val}")
     else()
       set(UMBRELLA_LDFLAGS
