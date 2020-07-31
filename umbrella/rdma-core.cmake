@@ -97,8 +97,9 @@ else ()
         message(FATAL_ERROR "
 
 System provided RDMA libraries not found.  Either set UMBRELLA_BUILD_RDMALIBS
-to build your own RDMA libraries, or use a package manager like
-apt or yum to install the missing libraries.
+to build your own RDMA libraries, use the umbrella bootstrap to build RDMA
+libraries, or use a package manager like apt or yum to install the missing
+libraries.
 
 ")
     endif ()
