@@ -62,8 +62,13 @@ if (UMBRELLA_BUILD_RDMALIBS)
     # we need for umbrella builds.  ensure it is switched off by
     # setting DCMAKE_INSTALL_LIBDIR to $prefix/lib
     #
+    # building rdma man pages from git requires rst2man and pandoc.
+    # XXX: rather than add extra depends on those, just switch man
+    # pages off for now.
+    #
     set (RDMA_CORE_CMAKECACHE ${UMBRELLA_CMAKECACHE}
-         -DCMAKE_INSTALL_LIBDIR:STRING=${CMAKE_INSTALL_PREFIX}/lib)
+         -DCMAKE_INSTALL_LIBDIR:STRING=${CMAKE_INSTALL_PREFIX}/lib
+         -DNO_MAN_PAGES:BOOL=on)
 
     #
     # create rdma-core target
