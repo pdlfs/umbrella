@@ -27,6 +27,11 @@ umbrella_defineopt (UMBRELLA_REQUIRE_RDMALIBS "OFF" BOOL
                    "Require RDMA libraries")
 
 
+unset (OFI_DEBUG)
+if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+    message(STATUS "  OFI debug enabled")
+    set(OFI_DEBUG --enable-debug)
+endif ()
 #
 # XXX: we are currently hardwiring extra stuff on the cray
 # XXX: have to explicitly disable verbs on ANL theta or we get link errors
@@ -64,8 +69,7 @@ ExternalProject_Add (ofi ${ofi_xtra}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_COMP}
                       ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAGS}
                       --prefix=${CMAKE_INSTALL_PREFIX}
-                      ${OFI_CRAY_EXTRA}
-                      ${OFI_EXTRA_CFG}
+                      ${OFI_CRAY_EXTRA} ${OFI_DEBUG}
     UPDATE_COMMAND "")
 
 #
