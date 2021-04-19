@@ -34,12 +34,13 @@ umbrella_testcommand (MARGO_TESTCMD TEST_COMMAND make check)
 #
 # depends
 #
+include (umbrella/argobots)
 include (umbrella/mercury)
 
 #
 # create margo target
 #
-ExternalProject_Add (margo DEPENDS mercury
+ExternalProject_Add (margo DEPENDS argobots mercury
     ${MARGO_DOWNLOAD} ${MARGO_PATCHCMD}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_COMP}
                       ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAGS}
