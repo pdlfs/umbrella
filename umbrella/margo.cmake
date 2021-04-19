@@ -16,7 +16,7 @@ if (NOT TARGET margo)
 # umbrella option variables
 #
 umbrella_defineopt (MARGO_REPO
-     "https://xgitlab.cels.anl.gov/sds/margo.git"
+     "https://github.com/mochi-hpc/mochi-margo.git"
      STRING "margo GIT repository")
 umbrella_defineopt (MARGO_TAG "master" STRING "margo GIT tag")
 umbrella_defineopt (MARGO_TAR "margo-${MARGO_TAG}.tar.gz"

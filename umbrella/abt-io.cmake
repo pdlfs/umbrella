@@ -15,7 +15,7 @@ if (NOT TARGET abt-io)
 #
 # umbrella option variables
 #
-umbrella_defineopt (ABT_IO_REPO "https://xgitlab.cels.anl.gov/sds/abt-io.git"
+umbrella_defineopt (ABT_IO_REPO "https://github.com/mochi-hpc/mochi-abt-io.git"
      STRING "ABT_IO GIT repository")
 umbrella_defineopt (ABT_IO_TAG "master" STRING "ABT_IO GIT tag")
 umbrella_defineopt (ABT_IO_TAR "abt-io-${ABT_IO_TAG}.tar.gz"
