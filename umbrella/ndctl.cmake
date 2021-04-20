@@ -33,12 +33,13 @@ umbrella_patchcheck (NDCTL_PATCHCMD ndctl)
 #
 include (umbrella/json-c)
 include (umbrella/keyutils)
+include (umbrella/kmod)
 include (umbrella/libuuid)
 
 #
 # create ndctl target
 #
-ExternalProject_Add (ndctl DEPENDS json-c keyutils libuuid
+ExternalProject_Add (ndctl DEPENDS json-c keyutils kmod libuuid
     ${NDCTL_DOWNLOAD} ${NDCTL_PATCHCMD}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_COMP}
                       ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAGS}
