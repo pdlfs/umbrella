@@ -69,7 +69,9 @@ ExternalProject_Add (ofi ${ofi_xtra}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_COMP}
                       ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAGS}
                       --prefix=${CMAKE_INSTALL_PREFIX}
-                      ${OFI_CRAY_EXTRA} ${OFI_DEBUG}
+                      ${OFI_CRAY_EXTRA}
+                      ${OFI_DEBUG}
+                      ${OFI_EXTRA_CFG}
     UPDATE_COMMAND "")
 
 #
