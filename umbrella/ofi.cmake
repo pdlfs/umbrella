@@ -17,7 +17,7 @@ if (NOT TARGET ofi)
 #
 umbrella_defineopt (OFI_REPO "https://github.com/ofiwg/libfabric.git"
      STRING "OFI (libfabric) GIT repository")
-umbrella_defineopt (OFI_TAG "master" STRING "OFI GIT tag")
+umbrella_defineopt (OFI_TAG "main" STRING "OFI GIT tag")
 umbrella_defineopt (OFI_TAR "ofi-${OFI_TAG}.tar.gz" STRING "OFI cache tar file")
 
 # udocumented hook to allow us to add extra config args
