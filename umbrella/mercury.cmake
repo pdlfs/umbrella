@@ -12,7 +12,6 @@
 #  MERCURY_GNI_USEUDREG - Force use of udreg instead of internal MR cache
 #  MERCURY_POST_LIMIT - enable post limit
 #  MERCURY_SELF_FORWARD - enable self forward thread
-#  MERCURY_VERBOSE_ERROR - enable verbose error
 #  MERCURY_STATS - enable stats
 #  MERCURY_CHECKSUM - enable checksuming
 #
@@ -42,7 +41,6 @@ umbrella_defineopt (MERCURY_GNI_USEUDREG "ON" BOOL
                     " Force use of udreg instead of internal MR cache")
 umbrella_defineopt (MERCURY_POST_LIMIT "ON" BOOL "Enable post limit")
 umbrella_defineopt (MERCURY_SELF_FORWARD "OFF" BOOL "Enable self forward thread")
-umbrella_defineopt (MERCURY_VERBOSE_ERROR "ON" BOOL "Enable verbose error")
 umbrella_defineopt (MERCURY_STATS "OFF" BOOL "Enable stats reporting")
 umbrella_defineopt (MERCURY_CHECKSUM "OFF" BOOL "Enable checksuming")
 
@@ -79,7 +77,6 @@ set (MERCURY_CMAKE_ARGS -DNA_USE_MPI=OFF -DNA_USE_SM=${MERCURY_SM}
      -DMERCURY_USE_SELF_FORWARD:BOOL=${MERCURY_SELF_FORWARD}
      -DMERCURY_ENABLE_POST_LIMIT:BOOL=${MERCURY_POST_LIMIT}
      -DMERCURY_USE_BOOST_PP=ON -DMERCURY_USE_CHECKSUMS:BOOL=${MERCURY_CHECKSUM}
-     -DMERCURY_ENABLE_VERBOSE_ERROR:BOOL=${MERCURY_VERBOSE_ERROR}
      -DMERCURY_ENABLE_STATS:BOOL=${MERCURY_STATS}
      -DNA_USE_BMI=${MERCURY_BMI} -DNA_USE_CCI=${MERCURY_CCI}
      -DNA_USE_OFI=${MERCURY_OFI} -DNA_USE_PSM=${MERCURY_PSM}
@@ -127,7 +124,6 @@ endif (MERCURY_PSM2)
 #
 message (STATUS "  Mercury config:")
 message (STATUS "    HG self-forward: ${MERCURY_SELF_FORWARD}")
-message (STATUS "    HG verbose: ${MERCURY_VERBOSE_ERROR}")
 message (STATUS "    HG stats: ${MERCURY_STATS}")
 message (STATUS "    HG post limit: ${MERCURY_POST_LIMIT}")
 message (STATUS "    NAs: bmi=${MERCURY_BMI} cci=${MERCURY_CCI}")
