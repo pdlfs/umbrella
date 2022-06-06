@@ -61,6 +61,10 @@ elseif ("${MVAPICH_DEVICE}" STREQUAL "ch3:psm" OR
     include (umbrella/psm)
     set (mvapich_xtradeps "psm")
     set (mvapich_withdev "--with-device=ch3:psm")
+elseif ("${MVAPICH_DEVICE}" STREQUAL "ch3:nemesis" OR
+    "${MVAPICH_DEVICE}" STREQUAL "nemesis")
+    message(STATUS "  MVAPICH nemesis device selected")
+    set (mvapich_withdev "--with-device=ch3:nemesis")
 else ()
      message(FATAL_ERROR "MVAPICH unknown device ${MVAPICH_DEVICE}")
 endif ()
