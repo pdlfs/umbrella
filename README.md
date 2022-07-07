@@ -435,9 +435,9 @@ The umbrella_patchcmd looks for patches in 4 places and generates
 commands to apply any patches found.  Using "bmi" the search order
 for patch files is:
 1. umbrella/patches/bmi.patch
-1. umbrella/patches/bmi-${CMAKE_SYSTEM_NAME}.patch
-1. ${UMBRELLA_USER_PATCHDIR}/bmi.patch
-1. ${UMBRELLA_USER_PATCHDIR}/bmi-${CMAKE_SYSTEM_NAME}.patch
+1. umbrella/patches/bmi-CMAKE_SYSTEM_NAME.patch
+1. UMBRELLA_USER_PATCHDIR/bmi.patch
+1. UMBRELLA_USER_PATCHDIR/bmi-CMAKE_SYSTEM_NAME.patch
 The user has the option of creating their own patch directory by
 setting UMBRELLA_USER_PATCHDIR.  If UMBRELLA_USER_PATCHDIR is not set,
 then umbrella_patchcmd does not search for patches there.
