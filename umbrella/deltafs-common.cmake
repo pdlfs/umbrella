@@ -39,12 +39,20 @@ umbrella_testcommand (deltafs-common DELTAFS_COMMON_TESTCMD TEST_COMMAND
 #
 # depends
 #
+set (DELTAFS_COMMON_DEPENDS mercury)
+
+# if UMBRELLA_USE_GLOG is set to ON, include it
+if (UMBRELLA_USE_GLOG)
+    include (umbrella/glog)
+    list (APPEND DELTAFS_COMMON_DEPENDS glog)
+endif (UMBRELLA_USE_GLOG)
+
 include (umbrella/mercury)
 
 #
 # create deltafs-common target
 #
-ExternalProject_Add (deltafs-common DEPENDS mercury
+ExternalProject_Add (deltafs-common DEPENDS ${DELTAFS_COMMON_DEPENDS}
     ${DELTAFS_COMMON_DOWNLOAD} ${DELTAFS_COMMON_PATCHCMD}
     CMAKE_ARGS ${PDLFS_OPTIONS} -DBUILD_SHARED_LIBS=ON
         -DBUILD_TESTS=${DELTAFS_COMMON_BUILDTESTS}
