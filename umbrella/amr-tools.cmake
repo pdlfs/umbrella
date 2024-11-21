@@ -61,7 +61,7 @@ umbrella_download (AMR_TOOLS_DOWNLOAD amr-tools
 umbrella_patchcheck (AMR_TOOLS_PATCHCMD amr-tools)
 # TODO: hook up tests (also add to ExternalProject_Add)
 # umbrella_testcommand (amr-tools AMR_TOOLS_TESTCMD
-    # TEST_COMMAND ctest -R preload -V )
+#                       ctest -R preload -V )
 
 
 #

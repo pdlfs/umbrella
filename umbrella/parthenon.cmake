@@ -27,7 +27,7 @@ umbrella_download (PARTHENON_DOWNLOAD parthenon
 umbrella_patchcheck (PARTHENON_PATCHCMD parthenon)
 # TODO: hook up tests (also add to ExternalProject_Add)
 # umbrella_testcommand (parthenon PARTHENON_TESTCMD
-    # TEST_COMMAND ctest -R preload -V )
+#                       ctest -R preload -V )
 
 #
 # depends

@@ -27,7 +27,7 @@ umbrella_download (KOKKOS_DOWNLOAD kokkos
 umbrella_patchcheck (KOKKOS_PATCHCMD kokkos)
 # TODO: hook up tests (also add to ExternalProject_Add)
 # umbrella_testcommand (kokkos KOKKOS_TESTCMD
-    # TEST_COMMAND ctest -R preload -V )
+#                       ctest -R preload -V )
 
 #
 # create kokkos target

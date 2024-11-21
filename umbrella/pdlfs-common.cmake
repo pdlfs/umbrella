@@ -33,7 +33,7 @@ umbrella_download (PDLFS_COMMON_DOWNLOAD pdlfs-common ${PDLFS_COMMON_TAR}
                    GIT_REPOSITORY ${PDLFS_COMMON_REPO}
                    GIT_TAG ${PDLFS_COMMON_TAG})
 umbrella_patchcheck (PDLFS_COMMON_PATCHCMD pdlfs-common)
-umbrella_testcommand (pdlfs-common PDLFS_COMMON_TESTCMD TEST_COMMAND
+umbrella_testcommand (pdlfs-common PDLFS_COMMON_TESTCMD
       ctest -E "gigaplus_test|autocompact_test|db_test|index_block_test" )
 
 #
