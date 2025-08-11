@@ -11,6 +11,10 @@
 #  MVAPICH_URLMD5  - md5 of tar file
 #
 #  MVAPICH_DEVICE - optional --with-device option
+#  MVAPICH_FFLAGS - optional FFLAGS args to configure
+#
+# XXX: mvapich may need FFLAGS=-fallow-argument-mismatch with newer
+#      gfortran compilers...
 #
 
 if (NOT TARGET mvapich)
@@ -22,19 +26,21 @@ umbrella_defineopt (MVAPICH_BASEURL
     "http://mvapich.cse.ohio-state.edu/download/mvapich"
     STRING "base url for mvapich")
 umbrella_defineopt (MVAPICH_URLDIR "mv2" STRING "mvapich subdir")
-umbrella_defineopt (MVAPICH_URLFILE "mvapich2-2.3.7-1.tar.gz"
+umbrella_defineopt (MVAPICH_URLFILE "mvapich2-2.3.7-2.tar.gz"
     STRING "mvapich tar file name")
-umbrella_defineopt (MVAPICH_URLMD5 "22f78ec18d417781ff803943ae62d6a9"
+umbrella_defineopt (MVAPICH_URLMD5 "ec63b01a1b2ba316e94a4b43a8166885"
     STRING "MD5 of tar file")
 #
 # XXX: default dev is ch3:mrail
 umbrella_defineopt(MVAPICH_DEVICE "" STRING "--with-device option")
+umbrella_defineopt(MVAPICH_FFLAGS "" STRING "FFLAGS args for configure")
 
 #
 # local vars
 #
 unset(mvapich_withdev)
 unset(mvapich_xtradeps)
+unset(mvapich_fflags)
 
 #
 # generate parts of the ExternalProject_Add args...
@@ -70,12 +76,24 @@ else ()
 endif ()
 
 #
+# fflags
+#
+if ("${MVAPICH_FFLAGS}" STREQUAL "")
+    message(STATUS "  MVAPICH_FFLAGS: no extra flags set")
+    message(STATUS "  (try setting -fallow-argument-mismatch if needed)")
+else()
+    message(STATUS "  MVAPICH_FFLAGS: set to ${MVAPICH_FFLAGS}")
+    set (mvapich_fflags "FFLAGS=${MVAPICH_FFLAGS}")
+endif()
+
+#
 # create mvapich target
 #
 ExternalProject_Add (mvapich DEPENDS rdma-core ${mvapich_xtradeps}
     ${MVAPICH_DOWNLOAD} ${MVAPICH_PATCHCMD}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_COMP}
                       ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAGS}
+                      ${mvapich_fflags}
                       --prefix=${CMAKE_INSTALL_PREFIX}
                       ${mvapich_withdev}
                       BUILD_IN_SOURCE 1  # XXX: bug. fails w/o this.
